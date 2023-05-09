@@ -10,14 +10,16 @@ export class Config {
     }
 
     load() {
+        Logger.info("Config", "Loading Config File...");
         this.config = JSON.parse(fs.readFileSync("./data/config.json").toString());
-        Logger.info("Config", "Loaded Config File");
+        Logger.info("Config", "Loaded Config File!");
         return
     }
 
     reload () {
+        Logger.info("Config", "Reloading Config File...");
         this.config = JSON.parse(fs.readFileSync("./data/config.json").toString());
-        Logger.info("Config", "Reloaded Config File");
+        Logger.info("Config", "Reloaded Config File!");
         return
     }
 

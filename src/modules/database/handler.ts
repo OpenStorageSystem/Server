@@ -9,9 +9,12 @@ export class DatabaseHandler {
 
     constructor() {
         if (!fs.existsSync("./data")) {
-            Logger.info("Database", "Creating data folder");
+            Logger.info("Database", "Creating data folder...");
             fs.mkdirSync("./data");
+            Logger.info("Database", "Data folder created!");
         }
+
+        Logger.info("Database", "Loading database...");
 
         this.db = new sqlite3.Database("./data/database.db", (err) => {
             if (err) {
@@ -20,6 +23,8 @@ export class DatabaseHandler {
                 Logger.info("Database", "Database Loaded!");
             }
         });
+
+        Logger.info("Database", "Initializing database...");
         
         // Initialize database
         this.db.run("CREATE TABLE IF NOT EXISTS users (username VARCHAR(255), token VARCHAR(255), settings JSON)", (err) => {
@@ -28,7 +33,7 @@ export class DatabaseHandler {
             }
         });
 
-        Logger.info("Database", "Database initialized");
+        Logger.info("Database", "Database initialized!");
 
     }
 }
