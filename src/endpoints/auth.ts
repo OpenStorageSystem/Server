@@ -4,7 +4,7 @@ import { sqlite3 } from "sqlite3";
 import { Request, Response } from "express";
 
 export function auth(req: Request, res: Response) {
-    const json = JSON.stringify(req.query.json);
+    const json = JSON.parse(req.body.json);
 
     console.log(json);
 }
